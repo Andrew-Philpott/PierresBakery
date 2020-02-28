@@ -1,10 +1,8 @@
-using System;
-
 namespace PierresBakery.Models
 {
   public abstract class BakedGood
   {
-    protected virtual string Name { get; set; }
+    public string Name { get; set; }
     protected static decimal PriceForOne { get; set; }
     protected static decimal PriceForDeal { get; set; }
     protected static int NumberOfBakedGoodsForDeal { get; set; }

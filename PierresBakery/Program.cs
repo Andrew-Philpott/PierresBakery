@@ -25,9 +25,31 @@ public class Program
       breadAmountString = Console.ReadLine();
       result = int.TryParse(breadAmountString, out breadAmountInt);
     }
-    for (int i = 0; i < breadAmountInt; i++)
+    switch (breadType)
     {
-      bread.Add(new Bread(breadType));
+      case "baguette":
+        for (int i = 0; i < breadAmountInt; i++)
+        {
+          Bread b = new Baguette("Baguette");
+          bread.Add(b);
+        }
+        break;
+      case "challah":
+        for (int i = 0; i < breadAmountInt; i++)
+        {
+          Bread b = new Challah("Challah");
+          bread.Add(b);
+        }
+        break;
+      case "bagel":
+        for (int i = 0; i < breadAmountInt; i++)
+        {
+          Bread b = new Bagel("Bagel");
+          bread.Add(b);
+        }
+        break;
+      default:
+        break;
     }
     Console.WriteLine(bread.Count);
     Console.WriteLine("Okay, that's " + breadAmountInt + " " + breadType + "\'s added to your order.");
@@ -38,7 +60,7 @@ public class Program
   {
     Console.WriteLine("What kind of pastry would you like? ['bear claw' for bear claw, 'danish' for danish, or 'cup cake' for cup cake.");
     string pastryType = Console.ReadLine();
-    while ((pastryType != "bear claw") && (pastryType != "doughnut") && (pastryType != "cup cake"))
+    while ((pastryType != "bear claw") && (pastryType != "danish") && (pastryType != "cup cake"))
     {
       Console.WriteLine("I'm sorry, the pastry entered wasn't recognized.");
       Console.WriteLine("What kind of pastry would you like? ['bear claw' for bear claw, 'danish' for danish, or 'cup cake' for cup cake.");
@@ -55,9 +77,31 @@ public class Program
       pastryAmountString = Console.ReadLine();
       result = int.TryParse(pastryAmountString, out pastryAmountInt);
     }
-    for (int i = 0; i < pastryAmountInt; i++)
+    switch (pastryType)
     {
-      pastries.Add(new Pastry(pastryType));
+      case "bear claw":
+        for (int i = 0; i < pastryAmountInt; i++)
+        {
+          Pastry p = new BearClaw("Bear Claw");
+          pastries.Add(p);
+        }
+        break;
+      case "cup cake":
+        for (int i = 0; i < pastryAmountInt; i++)
+        {
+          Pastry p = new CupCake("Cup Cake");
+          pastries.Add(p);
+        }
+        break;
+      case "danish":
+        for (int i = 0; i < pastryAmountInt; i++)
+        {
+          Pastry p = new Danish("Danish");
+          pastries.Add(p);
+        }
+        break;
+      default:
+        break;
     }
     Console.WriteLine(pastries.Count);
     Console.WriteLine("Okay, that's " + pastryAmountInt + " " + pastryType + "\'s added to your order.");
@@ -85,7 +129,39 @@ public class Program
 
   public static void Checkout(List<Bread> bread, List<Pastry> pastries)
   {
-    //Console.WriteLine("Okay here's what you ordered.");
+    Console.WriteLine("Okay here's what you ordered.");
+    if (pastries.Count != 0)
+    {
+      Console.WriteLine("Pastries");
+      if (BearClaw.Count != 0)
+      {
+        Console.WriteLine("Bear Claws: " + BearClaw.Count);
+      }
+      if (Danish.Count != 0)
+      {
+        Console.WriteLine("Danishes: " + Danish.Count);
+      }
+      if (CupCake.Count != 0)
+      {
+        Console.WriteLine("Cupcakes: " + CupCake.Count);
+      }
+    }
+    if (bread.Count != 0)
+    {
+      Console.WriteLine("Bread");
+      if (Baguette.Count != 0)
+      {
+        Console.WriteLine("Baguettes " + Baguette.Count);
+      }
+      if (Challah.Count != 0)
+      {
+        Console.WriteLine("Challah: " + Challah.Count);
+      }
+      if (Bagel.Count != 0)
+      {
+        Console.WriteLine("Bagels: " + Bagel.Count);
+      }
+    }
     decimal total = 0;
     total += Bread.CalculateCostForBakedGoods(bread.Count);
     total += Pastry.CalculateCostForBakedGoods(pastries.Count);
