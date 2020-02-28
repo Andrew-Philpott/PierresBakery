@@ -2,32 +2,42 @@ using System;
 
 namespace PierresBakery.Models
 {
-  public class Bread
+  public class Bread : BakedGood
   {
-    public string Name { get; set; }
-    public static decimal Price { get; set; } = 5.00m;
-    public Bread(string name)
+    public static int BreadCount { get; set; }
+    new public static decimal PriceForOne { get; private set; }
+    new public static decimal PriceForDeal { get; private set; }
+    new public static int NumberOfBakedGoodsForDeal { get; private set; }
+    new public static int NumberOfBakedGoodsFreeFromDeal { get; private set; }
+    static Bread()
     {
-      Name = name;
+      PriceForOne = 5.00m;
+      PriceForDeal = 2 * PriceForOne;
+      NumberOfBakedGoodsForDeal = 2;
+      NumberOfBakedGoodsFreeFromDeal = 1;
+    }
+    public Bread(string name) : base(name)
+    {
+
     }
 
-    public static decimal CalculateLoavesCost(int numberOfLoaves)
+    public static decimal CalculateCostForBakedGoods(int numberOfBakedGoods)
     {
-      int numberOfBreadDeals = 0;
-      int numberOfRegularPriceBread = 0;
-      if (numberOfLoaves % 3 == 0)
+      int numberOfBakedGoodsDeals = 0;
+      int numberOfRegularPriceBakeGoods = 0;
+      if (numberOfBakedGoods % ((NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal)) == 0)
       {
-        numberOfBreadDeals = (numberOfLoaves / 3);
+        numberOfBakedGoodsDeals = numberOfBakedGoods / (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
       }
       else
       {
-        numberOfBreadDeals = (numberOfLoaves / 3);
-        numberOfRegularPriceBread = numberOfLoaves % 3;
+        numberOfBakedGoodsDeals = numberOfBakedGoods / (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
+        numberOfRegularPriceBakeGoods = numberOfBakedGoods % NumberOfBakedGoodsForDeal;
       }
 
-      decimal costOfBreadDeals = numberOfBreadDeals * (2 * Price);
-      decimal costOfRegularPriceBreadLoaves = numberOfRegularPriceBread * Price;
-      return costOfBreadDeals + costOfRegularPriceBreadLoaves;
+      decimal costOfBakedGoodsDeals = numberOfBakedGoodsDeals * PriceForDeal;
+      decimal costOfRegularPricedBakedGood = numberOfRegularPriceBakeGoods * PriceForOne;
+      return costOfBakedGoodsDeals + costOfRegularPricedBakedGood;
     }
   }
 }

@@ -2,35 +2,41 @@ using System;
 
 namespace PierresBakery.Models
 {
-  public class Pastry
+  public class Pastry : BakedGood
   {
-    public string Name { get; set; }
-    public static decimal Price { get; set; } = 2.00m;
-    public Pastry(string name)
+    new public static decimal PriceForOne { get; private set; }
+    new public static decimal PriceForDeal { get; private set; }
+    new public static int NumberOfBakedGoodsForDeal { get; private set; }
+    new public static int NumberOfBakedGoodsFreeFromDeal { get; private set; }
+    static Pastry()
     {
-      Name = name;
+      PriceForOne = 2.00m;
+      PriceForDeal = 2.5m * PriceForOne;
+      NumberOfBakedGoodsForDeal = 3;
+      NumberOfBakedGoodsFreeFromDeal = 0;
     }
-
-    public static decimal CalculatePastriesCost(int numberOfPastries)
+    public Pastry(string name) : base(name)
     {
 
-      int numberOfRegularPricePastries = 0;
-      int numberOfPastryDeals = 0;
-
-      if (numberOfPastries % 3 == 0)
+    }
+    public static decimal CalculateCostForBakedGoods(int numberOfBakedGoods)
+    {
+      int numberOfBakedGoodsDeals = 0;
+      int numberOfRegularPriceBakeGoods = 0;
+      if (numberOfBakedGoods % ((NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal)) == 0)
       {
-        numberOfPastryDeals = (numberOfPastries / 3);
-        numberOfRegularPricePastries = 0;
+        numberOfBakedGoodsDeals = numberOfBakedGoods / (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
       }
       else
       {
-        numberOfPastryDeals = (numberOfPastries / 3);
-        numberOfRegularPricePastries = numberOfPastries % 3;
+        //Else the cost isequal to the number of baked goods deals + the remaining number of baked goods that are not part of the deal
+        numberOfBakedGoodsDeals = numberOfBakedGoods / (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
+        numberOfRegularPriceBakeGoods = numberOfBakedGoods % (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
       }
 
-      decimal costOfPastryDeals = numberOfPastryDeals * 5.00m;
-      decimal costOfRegularPricePastries = numberOfRegularPricePastries * Price;
-      return costOfPastryDeals + costOfRegularPricePastries;
+      decimal costOfBakedGoodsDeals = numberOfBakedGoodsDeals * PriceForDeal;
+      decimal costOfRegularPricedBakedGood = numberOfRegularPriceBakeGoods * PriceForOne;
+      return costOfBakedGoodsDeals + costOfRegularPricedBakedGood;
     }
   }
 }
