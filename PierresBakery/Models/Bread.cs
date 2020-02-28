@@ -30,8 +30,8 @@ namespace PierresBakery.Models
       }
 
       decimal costOfBreadDeals = numberOfBreadDeals * (2 * Price);
-      decimal costOfRegularPriceBread = numberOfRegularPriceBread * Price;
-      return costOfBreadDeals + costOfRegularPriceBread;
+      decimal costOfRegularPriceBreadLoaves = numberOfRegularPriceBread * Price;
+      return costOfBreadDeals + costOfRegularPriceBreadLoaves;
     }
   }
 }
