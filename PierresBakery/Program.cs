@@ -9,9 +9,11 @@ public class Program
     Console.WriteLine("Buy 2 loaves of bread, get 1 free. Buy 3 pastries for $5");
     Console.WriteLine("How many loaves of bread would you like?");
     int numberOfLoavesOfBread = int.Parse(Console.ReadLine());
-    Console.WriteLine(Bread.CalculateLoaves(numberOfLoavesOfBread));
+    Console.WriteLine(Bread.CalculateLoavesCost(numberOfLoavesOfBread));
     Console.WriteLine("How many pastries would you like?");
     int numberOfPastries = int.Parse(Console.ReadLine());
+    Console.WriteLine(Pastry.CalculatePastriesCost(numberOfPastries));
     Console.WriteLine("The total cost of your order is: ");
+    Console.ReadLine();
   }
 }

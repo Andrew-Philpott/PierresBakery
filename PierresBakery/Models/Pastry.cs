@@ -10,5 +10,13 @@ namespace PierresBakery.Models
     {
       Name = name;
     }
+
+    public static decimal CalculatePastriesCost(int numberOfPastries)
+    {
+
+      int numberOfRegularPrice = numberOfPastries;
+
+      return numberOfRegularPrice * Price;
+    }
   }
 }

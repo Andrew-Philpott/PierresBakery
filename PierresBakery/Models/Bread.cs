@@ -11,7 +11,7 @@ namespace PierresBakery.Models
       Name = name;
     }
 
-    public static decimal CalculateLoaves(int numberOfLoaves)
+    public static decimal CalculateLoavesCost(int numberOfLoaves)
     {
       int numberOfBreadDeals = 0;
       int numberOfRegularPriceBread = 0;
