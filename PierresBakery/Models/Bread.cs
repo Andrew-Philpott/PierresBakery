@@ -1,5 +1,3 @@
-using System;
-
 namespace PierresBakery.Models
 {
   public class Bread : BakedGood
@@ -32,7 +30,7 @@ namespace PierresBakery.Models
       else
       {
         numberOfBakedGoodsDeals = numberOfBakedGoods / (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
-        numberOfRegularPriceBakeGoods = numberOfBakedGoods % NumberOfBakedGoodsForDeal;
+        numberOfRegularPriceBakeGoods = numberOfBakedGoods % (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
       }
 
       decimal costOfBakedGoodsDeals = numberOfBakedGoodsDeals * PriceForDeal;

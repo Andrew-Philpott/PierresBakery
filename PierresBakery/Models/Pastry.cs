@@ -1,5 +1,3 @@
-using System;
-
 namespace PierresBakery.Models
 {
   public class Pastry : BakedGood
@@ -29,7 +27,6 @@ namespace PierresBakery.Models
       }
       else
       {
-        //Else the cost isequal to the number of baked goods deals + the remaining number of baked goods that are not part of the deal
         numberOfBakedGoodsDeals = numberOfBakedGoods / (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
         numberOfRegularPriceBakeGoods = numberOfBakedGoods % (NumberOfBakedGoodsForDeal + NumberOfBakedGoodsFreeFromDeal);
       }

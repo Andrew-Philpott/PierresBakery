@@ -8,13 +8,19 @@ public class Program
   {
     Console.WriteLine("What kind of bread would you like? ['bagel' for bagel, 'baguette' for baguette, or 'challah' for challah.");
     string breadType = Console.ReadLine();
+    while ((breadType != "bagel") && (breadType != "baguette") && (breadType != "challah"))
+    {
+      Console.WriteLine("I'm sorry, the bread entered wasn't recognized.");
+      Console.WriteLine("What kind of bread would you like? ['bagel' for bagel, 'baguette' for baguette, or 'challah' for challah.");
+      breadType = Console.ReadLine();
+    }
     Console.WriteLine("How many " + breadType + "\'s would you like?");
     string breadAmountString = Console.ReadLine();
     int breadAmountInt = 0;
     bool result = int.TryParse(breadAmountString, out breadAmountInt);
     while (!result)
     {
-      Console.WriteLine("I'm sorry, the value entered wasn't recognized. Please try again.");
+      Console.WriteLine("I'm sorry, the number value entered wasn't recognized. Please try again.");
       Console.WriteLine("How many " + breadType + "\'s would you like?");
       breadAmountString = Console.ReadLine();
       result = int.TryParse(breadAmountString, out breadAmountInt);
@@ -30,15 +36,21 @@ public class Program
 
   public static void PastryOption(List<Bread> bread, List<Pastry> pastries)
   {
-    Console.WriteLine("What kind of pastry would you like? ['bear claw' for bear claw, 'doughnut' for doughnut, or 'cup cake' for cup cake.");
+    Console.WriteLine("What kind of pastry would you like? ['bear claw' for bear claw, 'danish' for danish, or 'cup cake' for cup cake.");
     string pastryType = Console.ReadLine();
+    while ((pastryType != "bear claw") && (pastryType != "doughnut") && (pastryType != "cup cake"))
+    {
+      Console.WriteLine("I'm sorry, the pastry entered wasn't recognized.");
+      Console.WriteLine("What kind of pastry would you like? ['bear claw' for bear claw, 'danish' for danish, or 'cup cake' for cup cake.");
+      pastryType = Console.ReadLine();
+    }
     Console.WriteLine("How many " + pastryType + "\'s would you like?");
     string pastryAmountString = Console.ReadLine();
     int pastryAmountInt = 0;
     bool result = int.TryParse(pastryAmountString, out pastryAmountInt);
     while (!result)
     {
-      Console.WriteLine("I'm sorry, the value entered wasn't recognized. Please try again.");
+      Console.WriteLine("I'm sorry, the number value entered wasn't recognized. Please try again.");
       Console.WriteLine("How many " + pastryType + "\'s would you like?");
       pastryAmountString = Console.ReadLine();
       result = int.TryParse(pastryAmountString, out pastryAmountInt);
@@ -73,14 +85,12 @@ public class Program
 
   public static void Checkout(List<Bread> bread, List<Pastry> pastries)
   {
-    // Console.WriteLine("How many loaves of bread would you like?");
-    // int numberOfLoavesOfBread = int.Parse(Console.ReadLine());
-    // decimal costOfBread = Bread.CalculateCostForBakedGoods(numberOfLoavesOfBread);
-    // Console.WriteLine("How many pastries would you like?");
-    // int numberOfPastries = int.Parse(Console.ReadLine());
-    // decimal costOfPastries = Pastry.CalculateCostForBakedGoods(numberOfLoavesOfBread);
-    // Console.WriteLine("The total cost of your order is: " + (costOfBread + costOfPastries));
-    // Console.ReadLine();
+    //Console.WriteLine("Okay here's what you ordered.");
+    decimal total = 0;
+    total += Bread.CalculateCostForBakedGoods(bread.Count);
+    total += Pastry.CalculateCostForBakedGoods(pastries.Count);
+    Console.WriteLine("Your order comes to: $" + total);
+
   }
   public static void Main()
   {
@@ -101,6 +111,5 @@ public class Program
     {
       Program.PastryOption(bread, pastries);
     }
-    Program.ContinueShopping(bread, pastries);
   }
 }
