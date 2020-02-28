@@ -14,16 +14,22 @@ namespace PierresBakery.Models
     public static decimal CalculatePastriesCost(int numberOfPastries)
     {
 
-      int numberOfRegularPrice = numberOfPastries;
+      int numberOfRegularPricePastries = 0;
       int numberOfPastryDeals = 0;
 
       if (numberOfPastries % 3 == 0)
       {
         numberOfPastryDeals = (numberOfPastries / 3);
-        numberOfRegularPrice = 0;
+        numberOfRegularPricePastries = 0;
       }
+      else
+      {
+        numberOfPastryDeals = (numberOfPastries / 3);
+        numberOfRegularPricePastries = numberOfPastries % 3;
+      }
+
       decimal costOfPastryDeals = numberOfPastryDeals * 5.00m;
-      decimal costOfRegularPricePastries = numberOfRegularPrice * Price;
+      decimal costOfRegularPricePastries = numberOfRegularPricePastries * Price;
       return costOfPastryDeals + costOfRegularPricePastries;
     }
   }

@@ -19,14 +19,10 @@ namespace PierresBakery.Models
       {
         numberOfBreadDeals = (numberOfLoaves / 3);
       }
-      else if (numberOfLoaves % 3 != 0)
+      else
       {
         numberOfBreadDeals = (numberOfLoaves / 3);
         numberOfRegularPriceBread = numberOfLoaves % 3;
-      }
-      else
-      {
-        numberOfRegularPriceBread = numberOfLoaves;
       }
 
       decimal costOfBreadDeals = numberOfBreadDeals * (2 * Price);
