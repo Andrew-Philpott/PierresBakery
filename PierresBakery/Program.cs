@@ -110,18 +110,18 @@ public class Program
 
   public static void ContinueShopping(List<Bread> bread, List<Pastry> pastries)
   {
-    Console.WriteLine("What else can I get for you today? ['Bread' for bread, 'Pastry' for pastries, or 'Checkout' to review your order]");
+    Console.WriteLine("What else can I get for you today? ['bread' for bread, 'pastry' for pastries, or 'checkout' to review your order]");
 
     string breadOrPasty = Console.ReadLine();
-    if (breadOrPasty == "Bread")
+    if (breadOrPasty == "bread")
     {
       Program.BreadOption(bread, pastries);
     }
-    else if (breadOrPasty == "Pastry")
+    else if (breadOrPasty == "pastry")
     {
       Program.PastryOption(bread, pastries);
     }
-    else if (breadOrPasty == "Checkout")
+    else if (breadOrPasty == "checkout")
     {
       Checkout(bread, pastries);
     }
@@ -129,6 +129,7 @@ public class Program
 
   public static void Checkout(List<Bread> bread, List<Pastry> pastries)
   {
+
     Console.WriteLine("Okay here's what you ordered.");
     if (pastries.Count != 0)
     {
@@ -179,13 +180,13 @@ public class Program
     Console.WriteLine(Bread.PriceForDeal);
     Console.WriteLine("Hi! Welcome to Pierres Bakery! The price of a loaf of bread is $" + (int)Bread.PriceForOne + " and a pastry is $" + (int)Pastry.PriceForOne);
     Console.WriteLine("Buy 2 loaves of bread, get 1 free. Buy 3 pastries for $5");
-    Console.WriteLine("What would you like today? ['Bread' for bread, 'Pastry' for pastries");
+    Console.WriteLine("What would you like today? ['bread' for bread, 'pastry' for pastries]");
     string breadOrPasty = Console.ReadLine();
-    if (breadOrPasty == "Bread")
+    if (breadOrPasty == "bread")
     {
       Program.BreadOption(bread, pastries);
     }
-    else if (breadOrPasty == "Pastry")
+    else if (breadOrPasty == "pastry")
     {
       Program.PastryOption(bread, pastries);
     }
