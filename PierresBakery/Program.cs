@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using PierresBakery.Models;
 public class Program
 {
-
   public static void BreadOption(List<Bread> bread, List<Pastry> pastries)
   {
     Console.WriteLine("What kind of bread would you like? ['bagel' for bagel, 'baguette' for baguette, or 'challah' for challah.");
-    string breadType = Console.ReadLine();
+    string breadType = Console.ReadLine().ToLower();
     while ((breadType != "bagel") && (breadType != "baguette") && (breadType != "challah"))
     {
       Console.WriteLine("I'm sorry, the bread entered wasn't recognized.");
       Console.WriteLine("What kind of bread would you like? ['bagel' for bagel, 'baguette' for baguette, or 'challah' for challah.");
-      breadType = Console.ReadLine();
+      breadType = Console.ReadLine().ToLower();
     }
     Console.WriteLine("How many " + breadType + "\'s would you like?");
     string breadAmountString = Console.ReadLine();
@@ -51,20 +50,18 @@ public class Program
       default:
         break;
     }
-    Console.WriteLine(bread.Count);
     Console.WriteLine("Okay, that's " + breadAmountInt + " " + breadType + "\'s added to your order.");
     ContinueShopping(bread, pastries);
   }
-
   public static void PastryOption(List<Bread> bread, List<Pastry> pastries)
   {
     Console.WriteLine("What kind of pastry would you like? ['bear claw' for bear claw, 'danish' for danish, or 'cup cake' for cup cake.");
-    string pastryType = Console.ReadLine();
+    string pastryType = Console.ReadLine().ToLower();
     while ((pastryType != "bear claw") && (pastryType != "danish") && (pastryType != "cup cake"))
     {
       Console.WriteLine("I'm sorry, the pastry entered wasn't recognized.");
       Console.WriteLine("What kind of pastry would you like? ['bear claw' for bear claw, 'danish' for danish, or 'cup cake' for cup cake.");
-      pastryType = Console.ReadLine();
+      pastryType = Console.ReadLine().ToLower();
     }
     Console.WriteLine("How many " + pastryType + "\'s would you like?");
     string pastryAmountString = Console.ReadLine();
@@ -103,7 +100,6 @@ public class Program
       default:
         break;
     }
-    Console.WriteLine(pastries.Count);
     Console.WriteLine("Okay, that's " + pastryAmountInt + " " + pastryType + "\'s added to your order.");
     ContinueShopping(bread, pastries);
   }
@@ -112,7 +108,7 @@ public class Program
   {
     Console.WriteLine("What else can I get for you today? ['bread' for bread, 'pastry' for pastries, or 'checkout' to review your order]");
 
-    string breadOrPasty = Console.ReadLine();
+    string breadOrPasty = Console.ReadLine().ToLower();
     if (breadOrPasty == "bread")
     {
       Program.BreadOption(bread, pastries);
@@ -129,7 +125,6 @@ public class Program
 
   public static void Checkout(List<Bread> bread, List<Pastry> pastries)
   {
-
     Console.WriteLine("Okay here's what you ordered.");
     if (pastries.Count != 0)
     {
@@ -176,8 +171,6 @@ public class Program
     List<Bread> bread = new List<Bread>();
     List<Pastry> pastries = new List<Pastry>();
 
-    Console.WriteLine(Bread.PriceForOne);
-    Console.WriteLine(Bread.PriceForDeal);
     Console.WriteLine("Hi! Welcome to Pierres Bakery! The price of a loaf of bread is $" + (int)Bread.PriceForOne + " and a pastry is $" + (int)Pastry.PriceForOne);
     Console.WriteLine("Buy 2 loaves of bread, get 1 free. Buy 3 pastries for $5");
     Console.WriteLine("What would you like today? ['bread' for bread, 'pastry' for pastries]");
