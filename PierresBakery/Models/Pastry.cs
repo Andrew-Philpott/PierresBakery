@@ -2,10 +2,10 @@ namespace PierresBakery.Models
 {
   public class Pastry : BakedGood
   {
-    new public static decimal PriceForOne { get; private set; }
-    new public static decimal PriceForDeal { get; private set; }
-    new public static int NumberOfBakedGoodsForDeal { get; private set; }
-    new public static int NumberOfBakedGoodsFreeFromDeal { get; private set; }
+    public static decimal PriceForOne { get; private set; }
+    public static decimal PriceForDeal { get; private set; }
+    public static int NumberOfBakedGoodsForDeal { get; private set; }
+    public static int NumberOfBakedGoodsFreeFromDeal { get; private set; }
     static Pastry()
     {
       PriceForOne = 2.00m;
