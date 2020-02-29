@@ -7,5 +7,10 @@ namespace PierresBakery.Models
     {
       Count++;
     }
+
+    ~BearClaw()
+    {
+      Count--;
+    }
   }
 }

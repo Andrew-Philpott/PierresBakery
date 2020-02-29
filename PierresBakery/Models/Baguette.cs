@@ -7,5 +7,9 @@ namespace PierresBakery.Models
     {
       Count++;
     }
+    ~Baguette()
+    {
+      Count--;
+    }
   }
 }
