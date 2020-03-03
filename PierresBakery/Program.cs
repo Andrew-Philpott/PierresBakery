@@ -158,12 +158,12 @@ public class Program
         Console.WriteLine("Bagels: " + Bagel.Count);
       }
     }
-    decimal totalBeforeTax = 0;
+    double totalBeforeTax = 0;
     totalBeforeTax += Bread.CalculateCostForBakedGoods(bread.Count);
     totalBeforeTax += Pastry.CalculateCostForBakedGoods(pastries.Count);
     Console.WriteLine("Your order comes to:");
     Console.WriteLine("Before tax: " + String.Format("{0:C}", totalBeforeTax));
-    decimal totalAfterTax = totalBeforeTax + (totalBeforeTax * 0.065m);
+    double totalAfterTax = totalBeforeTax + (totalBeforeTax * 0.065);
     Console.WriteLine("After tax: " + String.Format("{0:C}", totalAfterTax));
   }
   public static void Main()
